@@ -1,0 +1,14 @@
+.inviteTitle { background:url(../img/battle-mode-top-bg.png) top left no-repeat !important; }
+.inviteTitle h2 { text-align:center; line-height:90px !important; }
+
+.fightersBox { margin-bottom:20px; background:url(../img/text-vs.png) center no-repeat; }
+
+.fightersBox .left { float:left; text-align:right; padding-right:14px;  }
+.fightersBox .right { float:right; text-align:left; padding-left:14px;  }
+
+.fightersBox .left span.fighterName { padding-right:10px; }
+.fightersBox .right span.fighterName { padding-left:10px; }
+.fightersBox span.fighterName { height:66px; line-height:66px; font-size:16px; }
+
+.fightersBox .left, 
+.fightersBox .right { width:220px; height:81px; background:url(../img/fighterBG.png) top left no-repeat;padding-top:9px; }

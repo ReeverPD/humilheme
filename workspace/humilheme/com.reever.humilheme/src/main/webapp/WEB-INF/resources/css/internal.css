@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+#top { height:83px; width:100%; background:rgba(0, 0, 0, 0.4); position:relative; z-index:99; margin-bottom:10px; /* top:0; left:0; */ }
+#top .topLogo { background:url(../img/humilheMeLogo02.png) top left no-repeat; width:182px; height:46px; display:block; }
+
+#top .topContainer { width:940px; margin:0 auto; }
+#top .topLogo { float:left; position:relative; top:17px; }
+#top .language { float:right; position:relative; top:31px; }
+
+.facebookFriendsList li { position:relative; background:#999; float:left; margin:0 3px 3px 0; width:103px; height:103px; }
+.facebookFriendsList li img { position:relative; z-index:1; width:103px; }
+.facebookFriendsList li a.inviteTrigger { font-family: 'Pacifico', cursive; text-shadow:1px 1px 0px #d3ed42; color:#708302; text-align:center; line-height:103px; font-weight:normal; font-size:20px; display:none; position:absolute; z-index:3; top:0; left:0; width:103px; height:103px; background:url(../img/inviteFriendOverBG.png) top left repeat-x; }
+.facebookFriendsList li span.friendName { color:#FFF; position:absolute; z-index:2; bottom:5px; left:5px; font-size:12px; line-height:12px; }
+.facebookFriendsList li:hover a.inviteTrigger { display:block; }
