@@ -27,14 +27,7 @@
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd" default-lazy-init="true">
     
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-    <!-- Application Message Bundle -->
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="/WEB-INF/messages/messages"/>
-        <property name="cacheSeconds" value="0"/>
-    </bean>
-
-
+    
     <!-- JPA Config -->
         
     <beans profile="enterprise">
@@ -57,10 +50,28 @@
                 </props>
             </property>
         </bean>
-        
-        <tx:jta-transaction-manager/>
             
     </beans>
-		
+	
+    <beans>
+        
+        <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+        
+        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">  
+            <property name="entityManagerFactory" ref="entityManagerFactory" />
+        </bean>
+        
+<!--        <bean class="org.springframework.orm.jpa.JpaTransactionManager">
+            <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        </bean>-->
+        
+        <!-- Application Message Bundle -->
+        <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+            <property name="basename" value="/WEB-INF/messages/messages"/>
+            <property name="cacheSeconds" value="0"/>
+        </bean>
+        
+        
+    </beans>	
     
 </beans>

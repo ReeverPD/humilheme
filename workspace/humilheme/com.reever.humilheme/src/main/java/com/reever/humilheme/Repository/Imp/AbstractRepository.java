@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -23,9 +24,9 @@ public class AbstractRepository<T extends AbstractEntity<K>, K extends Object> i
     private final Logger _logger = LoggerFactory.getLogger(AbstractRepository.class);
     
     @Getter
-    @PersistenceContext
     protected EntityManager entityManager;
 
+    @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -36,12 +37,14 @@ public class AbstractRepository<T extends AbstractEntity<K>, K extends Object> i
         return (T)this.getEntityManager().find(type.getClass(), id);
     }
 
+    @Transactional
     @Override
     public T save(T entity) {
         this.getEntityManager().persist(entity);
         return entity;
     }
 
+    @Transactional
     @Override
     public Boolean delete(T entity) {
         try{
