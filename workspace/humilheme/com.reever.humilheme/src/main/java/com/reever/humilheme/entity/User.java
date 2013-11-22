@@ -2,6 +2,9 @@ package com.reever.humilheme.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +18,12 @@ import lombok.Setter;
 @Entity
 @Table(name="fb_user")
 public class User extends AbstractEntity<Long> {
+    
+    @Getter 
+    @Id 
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long Id;
     
     @Getter @Setter
     @Column(name="username")

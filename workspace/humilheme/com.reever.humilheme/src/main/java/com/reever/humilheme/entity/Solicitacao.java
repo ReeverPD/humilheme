@@ -2,6 +2,9 @@ package com.reever.humilheme.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -9,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Calendar;
 
 /**
  *
@@ -17,6 +21,12 @@ import lombok.Setter;
 @Entity
 @Table(name="solicitacao")
 public class Solicitacao extends AbstractEntity<Long> {
+    
+    @Getter 
+    @Id 
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private Long Id;
     
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
@@ -33,5 +43,5 @@ public class Solicitacao extends AbstractEntity<Long> {
     @Getter @Setter
     @Column(name="data_criacao")
     @Temporal(TemporalType.TIMESTAMP)
-    private Long dataCriacao;
+    private Calendar dataCriacao;
 }

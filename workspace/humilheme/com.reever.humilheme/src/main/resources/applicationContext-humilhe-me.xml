@@ -24,17 +24,43 @@
           http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi-1.2.xsd
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
-          http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+          http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd" default-lazy-init="true">
     
-        
-    
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
     <!-- Application Message Bundle -->
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/messages/messages"/>
         <property name="cacheSeconds" value="0"/>
     </bean>
-    
-    
-    
+
+
+    <!-- JPA Config -->
+        
+    <beans profile="enterprise">
+        <jee:jndi-lookup id="dataSource" jndi-name="jdbc/humilhe-ds" />
+        
+        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+            <property name="persistenceUnitName" value="humilhePU" />
+            <property name="jpaVendorAdapter">
+                <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                    <property name="showSql" value="false"/>
+                    <property name="generateDdl" value="false"/>
+                    <property name="databasePlatform" value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+                </bean>
+            </property>
+            <property name="jpaDialect" ref="jpaDialect"/>
+            <property name="jpaProperties">
+                <props>
+                    <prop key="eclipselink.logging.level">WARNING</prop>
+                    <prop key="eclipselink.weaving">static</prop>
+                </props>
+            </property>
+        </bean>
+        
+        <tx:jta-transaction-manager/>
+            
+    </beans>
+		
     
 </beans>
