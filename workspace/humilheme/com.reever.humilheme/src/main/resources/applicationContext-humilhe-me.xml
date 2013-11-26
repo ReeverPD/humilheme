@@ -27,7 +27,7 @@
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd" default-lazy-init="true">
     
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect" />
-    
+    <bean id="cookieLoginFace" class="com.reever.humilheme.web.CookieController" p:expiry="#{60 * 60 * 1 * 1}" p:nomeCookie="cookieUserFace"/>
     <!-- JPA Config -->
         
     <beans profile="enterprise">

@@ -163,7 +163,7 @@
             <artifactId>spring-security-config</artifactId>
             <version>${org.springframework.security-version}</version>
         </dependency>-->
-<!--        <dependency>
+        <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-core</artifactId>
             <version>${org.springframework.social-version}</version>
@@ -172,7 +172,12 @@
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-web</artifactId>
             <version>${org.springframework.social-version}</version>
-        </dependency>-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
+            <version>${org.springframework.social-version}</version>
+        </dependency>
         
         <!-- JAVAX -->
         <dependency>
@@ -205,13 +210,6 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
-        
-        <!-- Facebook API -->
-        <dependency>
-            <groupId>com.google.code.facebookapi</groupId>
-            <artifactId>facebook-java-api</artifactId>
-            <version>3.0.4</version>
         </dependency>
       
         <!-- JUNIT -->

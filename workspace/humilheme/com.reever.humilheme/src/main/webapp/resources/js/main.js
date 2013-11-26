@@ -16,16 +16,20 @@ $(document).ready(function(){
 	//overlay
 	$(".btnEstrague").bind("click", function(e){
 		e.preventDefault();
-		$("#overlay").fadeIn(1000, function(){
-			var element = $(this), 
-				btnClose = element.find(".overlayBtnClose");
-				
-			btnClose.bind("click", function(e){
-				e.preventDefault();
-				element.fadeOut(1000, function(){});
-			});
-				
-		});
+        if($("#termos").is(":checked")){
+            $("#overlay").fadeIn(1000, function(){
+                var element = $(this), 
+                    btnClose = element.find(".overlayBtnClose");
+
+                btnClose.bind("click", function(e){
+                    e.preventDefault();
+                    element.fadeOut(1000, function(){});
+                });
+
+            });
+        }else{
+           $("#termosSpan").css("color", "red");
+        }
 	});
 	
 	$(".facebookFriendsList .inviteTrigger").bind("click", function(e){
@@ -41,4 +45,28 @@ $(document).ready(function(){
 				
 		});
 	});
+    
+    $("#btnDonate").bind('click', function(e){
+        e.preventDefault();
+        value = $("#txtDonationField").val();
+        $.ajax({
+            url: APPLICATION_CONTEXT_PATH+"/Doar/"+value,
+            type: "POST",
+            dataType: "json",
+            success : function(data){
+                alert(data.sucess);
+                if(data.sucess){
+                    $("#_xclickPaypal").submit();
+                }
+            }
+        })        
+    })
+    
+    
+    $("#btnLoginFace").bind('click', function(e){
+        e.preventDefault();
+        $("#_frmLoginFace").submit();
+    });
+    
+    
 });

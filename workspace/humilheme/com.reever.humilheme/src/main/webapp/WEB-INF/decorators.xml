@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<decorators></decorators>
+<decorators defaultdir="/WEB-INF/decorators">
+    <excludes>
+		<pattern>/nodecorate/*</pattern>
+		<pattern>/styles/*</pattern>
+		<pattern>/assets/*</pattern>
+		<pattern>/scripts/*</pattern>
+		<pattern>/images/*</pattern>
+		<pattern>/index.html</pattern>
+		<pattern>/META-INF/*</pattern>
+	</excludes>
+    
+    <decorator name="main-theme" page="main-theme.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
