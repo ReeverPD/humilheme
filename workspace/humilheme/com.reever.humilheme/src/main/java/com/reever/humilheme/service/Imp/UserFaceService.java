@@ -1,7 +1,9 @@
 package com.reever.humilheme.service.Imp;
 
+import com.reever.humilheme.entity.User;
 import com.reever.humilheme.exception.FacebookLoginException;
 import com.reever.humilheme.service.IUserFaceService;
+import com.reever.humilheme.service.IUserService;
 import com.reever.humilheme.to.UserTO;
 import com.reever.humilheme.util.UrlMapping;
 import com.reever.humilheme.web.CookieController;
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.UserProfile;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.oauth2.AccessGrant;
@@ -38,6 +41,9 @@ public class UserFaceService implements IUserFaceService{
     @Autowired
     private CookieController cookieLoginFace;
     
+    @Autowired
+    private IUserService userService;
+    
     @Override
 	public String getChaveSession() {
 		return CHAVE_SESSION;
@@ -63,6 +69,25 @@ public class UserFaceService implements IUserFaceService{
                 AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUrl, null);
                 Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
                 cookieLoginFace.createCookie(request, response, code);
+                UserProfile userProfileFace = connection.fetchUserProfile();
+                UserTO userTO = new UserTO();
+                if(!userService.existsUser(userProfileFace.getUsername())){
+                    //Gravar o usuario novo
+                    User us = new User();
+                    us.setEmail(userProfileFace.getEmail());
+                    us.setProfileLink(connection.getProfileUrl());
+                    us.setProfileName(connection.getDisplayName());
+                    us.setProfilePicture(connection.getImageUrl());
+                    us.setTokenAuth(code);
+                    us.setUserName(userProfileFace.getUsername());
+                    userService.save(us);
+                }
+
+                User usr = userService.getByUserName(userProfileFace.getUsername());
+                userTO.setIdUser(usr.getId());
+                userTO.setUsername(usr.getUserName());
+                userTO.setCode(code);
+                this.setUserFaceSession(userTO);
                 return true;
             }
         }

@@ -15,6 +15,10 @@ public class UserTO implements Serializable {
     private Long idUser;
     
     @Getter @Setter
+    private String username;
+    
+    
+    @Getter @Setter
     private String code;
     
 }
