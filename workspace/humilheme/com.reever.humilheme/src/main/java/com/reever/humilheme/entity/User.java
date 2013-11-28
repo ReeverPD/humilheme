@@ -49,4 +49,8 @@ public class User extends AbstractEntity<Long> {
     @Column(name="profile_link")
     private String profileLink;
     
+    @Getter @Setter
+    @Column(name="profile_id")
+    private String profileId;
+    
 }

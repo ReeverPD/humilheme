@@ -7,11 +7,13 @@ import com.reever.humilheme.exception.UserException;
 import com.reever.humilheme.service.AbstractService;
 import com.reever.humilheme.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author iuriandreazza
  */
+@Service
 public class UserService extends AbstractService<User, Long> implements IUserService{
 
     @Autowired

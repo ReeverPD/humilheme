@@ -3,14 +3,24 @@
     <excludes>
 		<pattern>/nodecorate/*</pattern>
 		<pattern>/styles/*</pattern>
+        <pattern>/js/*</pattern>
+        <pattern>/css/*</pattern>
 		<pattern>/assets/*</pattern>
 		<pattern>/scripts/*</pattern>
 		<pattern>/images/*</pattern>
+        <pattern>/img/*</pattern>
 		<pattern>/index.html</pattern>
 		<pattern>/META-INF/*</pattern>
 	</excludes>
     
     <decorator name="main-theme" page="main-theme.jsp">
+        <pattern>/Home</pattern>
+        <pattern>/</pattern>
         <pattern>/*</pattern>
+    </decorator>
+    <decorator name="intern-theme" page="intern-theme.jsp">
+        <pattern>/Convidar</pattern>
+        <pattern>/Batalhar</pattern>
+        <pattern>/Humilhar</pattern>
     </decorator>
 </decorators>

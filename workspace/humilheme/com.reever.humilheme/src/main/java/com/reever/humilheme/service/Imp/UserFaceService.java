@@ -56,42 +56,37 @@ public class UserFaceService implements IUserFaceService{
         params.setRedirectUri(redirectUrl);
         
         String cookieCode = cookieLoginFace.getCookie(request);
-        if(!StringUtils.isEmpty(cookieCode)){
-            AccessGrant accessGrant = oauthOperations.exchangeForAccess(cookieCode, redirectUrl, null);
-            Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
-            return true;
+        if(StringUtils.isEmpty(code)){
+            String authorizeUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, params);
+            throw new FacebookLoginException(authorizeUrl);
         }else{
-            if(StringUtils.isEmpty(code)){
-                String authorizeUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, params);
-                throw new FacebookLoginException(authorizeUrl);
-            }else{
-                // upon receiving the callback from the provider:
-                AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUrl, null);
-                Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
-                cookieLoginFace.createCookie(request, response, code);
-                UserProfile userProfileFace = connection.fetchUserProfile();
-                UserTO userTO = new UserTO();
-                if(!userService.existsUser(userProfileFace.getUsername())){
-                    //Gravar o usuario novo
-                    User us = new User();
-                    us.setEmail(userProfileFace.getEmail());
-                    us.setProfileLink(connection.getProfileUrl());
-                    us.setProfileName(connection.getDisplayName());
-                    us.setProfilePicture(connection.getImageUrl());
-                    us.setTokenAuth(code);
-                    us.setUserName(userProfileFace.getUsername());
-                    userService.save(us);
-                }
-
-                User usr = userService.getByUserName(userProfileFace.getUsername());
-                userTO.setIdUser(usr.getId());
-                userTO.setUsername(usr.getUserName());
-                userTO.setCode(code);
-                this.setUserFaceSession(userTO);
-                return true;
+            // upon receiving the callback from the provider:
+            AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, redirectUrl, null);
+            Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
+            cookieLoginFace.createCookie(request, response, code);
+            UserProfile userProfileFace = connection.fetchUserProfile();
+            UserTO userTO = new UserTO();
+            if(!userService.existsUser(userProfileFace.getUsername())){
+                //Gravar o usuario novo
+                User us = new User();
+                us.setEmail(userProfileFace.getEmail());
+                us.setProfileLink(connection.getProfileUrl());
+                us.setProfileName(connection.getDisplayName());
+                us.setProfilePicture(connection.getImageUrl());
+                us.setTokenAuth(connection.getKey().getProviderId());
+                us.setUserName(userProfileFace.getUsername());
+                us.setProfileId(connection.getApi().userOperations().getUserProfile().getId());
+                userService.save(us);
             }
+
+            User usr = userService.getByUserName(userProfileFace.getUsername());
+            userTO.setIdUser(usr.getId());
+            userTO.setUsername(usr.getUserName());
+            userTO.setCode(code);
+            this.setUserFaceSession(userTO);
+            return true;
         }
-	}
+   	}
     
     @Override
     public UserTO getAuthUser(){
