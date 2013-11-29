@@ -14,12 +14,14 @@ public class UrlMapping {
     public static final String DOAR = "/Doar/{mensagem}";
     
     /* Static Content */
-    public static final String TERMOS_UTILIZACAO = "/Termos-de-Utilização";
-    public static final String POLITICA_PRIVACIDADE = "/Politica-de-Privacidade";
-    public static final String CONTATO = "/Contato";
+    public static final String TERMOS_UTILIZACAO = "/app/Termos-de-Utilização";
+    public static final String POLITICA_PRIVACIDADE = "/app/Politica-de-Privacidade";
+    public static final String CONTATO = "/app/Contato";
     
     /* Humilhar */
-    public static final String CONVIDAR_AMIGO = "/Convidar";
+    public static final String CONVIDAR_AMIGO = "/app/Convidar";
+    public static final String BATALHAR_AMIGO = "/app/Batalhar/{battalhaHash}";
+    public static final String HUMILHAR_AMIGO = "/app/Humilhar/{profileA}/{profileB}";
     
     
     /* Login com Facebook */

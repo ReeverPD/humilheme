@@ -4,7 +4,6 @@
     Author     : iuriandreazza
 --%>
 <?xml version="1.0" encoding="UTF-8" ?>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,9 +30,9 @@
     <link rel="apple-touch-icon-precomposed" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/resources/img/favicon.png">
 
-        <title><decorator:title default="Humilhe.me - Totalmente desnecessário" /></title>
+        <title><sitemesh:write property='title'/> Humilhe.me - Totalmente desnecessário</title>
         
-        <decorator:head/>
+        <sitemesh:write property='head'/>
         
         <script type="text/javascript" charset="utf-8">
         (function(G,o,O,g,L,e){G[g]=G[g]||function(){(G[g]['q']=G[g]['q']||[]).push(
@@ -46,7 +45,7 @@
         
 </head>
 <body>
-    <decorator:body />
+    <sitemesh:write property='body'/>
     
     <form action="${pageContext.servletContext.contextPath}/Login-Facebook" id="_frmLoginFace" name="_frmLoginFace">
         <input type="hidden" name="x" value="1" />

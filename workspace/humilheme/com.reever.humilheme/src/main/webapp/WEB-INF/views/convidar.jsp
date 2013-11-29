@@ -3,7 +3,6 @@
     Created on : Nov 4, 2013, 11:32:29 PM
     Author     : iuriandreazza
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -126,68 +125,15 @@
         
         <div class="margin_bottom_30 rightCol">
         	
-            <div class="donation">
-                <div class="donationContent">
-                    <form enctype="application/x-www-form-urlencoded" method="post" class="defaultForm">
-                        <div>
-                            <div class="donTop">
-                                <h1>Humilhe-nos fazendo uma doação: </h1>
-                                <input type="text" class="field" placeholder="sua blasfêmia aqui!" />
-                            </div>
-                            <div>
-                                <div class="cardFlags" style=""><img src="${pageContext.servletContext.contextPath}/resources/img/cardFlags01.png" /></div>
-                                <a href="#" class="btnDonate"></a>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <jsp:include page="../includes/donate.jsp"/>
             
             <div class="hr margin_bottom_20"></div>
             
-            <div class="ads">
-            	
-                <div class="margin_bottom_10">
-                	<img src="${pageContext.servletContext.contextPath}/resources/img/ads01.jpg">
-              	</div>
-                
-                <div>
-                	<img src="${pageContext.servletContext.contextPath}/resources/img/ads02.jpg">
-              	</div>
-                
-            </div>
+            <jsp:include page="../includes/adsense.jsp"/>
             
         </div>
         
-        <div class="clear"></div>
-        
-        <div class="menu">
-            <div class="hr"></div>
-            <div class="menu-content">
-                <div class="m-left">
-                    <a href="" title="termos de utilização">termos de utilização</a> 
-                    <span>|</span> 
-                    <a href="" title="política de privacidade">política de privacidade</a> 
-                    <span>|</span> 
-                    <a href="" title="contato">contato</a>
-                </div>
-                
-                <div class="share">
-                    <a href="http://facebook.com/" class="ntw-facebook" title="Facebook"></a>
-                    <a href="http://twitter.com/" class="ntw-twitter" title="Twitter"></a>
-                </div>
-                
-                <div class="clear"></div>
-                
-            </div>
-            <div class="hr"></div>
-        </div>
-       	
-        <div class="inviteFooter">
-        	<a href="https://www.facebook.com/ShitstormLabs" title="Shitstorm Labs - Creative Experiments" class="shitstormLabs"></a>
-        </div>
+            <jsp:include page="../includes/footer.jsp"/>
 
     </div>
     </body>

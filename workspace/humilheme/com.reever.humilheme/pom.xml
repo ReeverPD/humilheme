@@ -26,9 +26,9 @@
       
         <!-- SiteMESH -->
         <dependency>
-            <groupId>opensymphony</groupId>
+            <groupId>org.sitemesh</groupId>
             <artifactId>sitemesh</artifactId>
-            <version>2.4.2</version>
+            <version>3.0-alpha-2</version>
         </dependency>
       
         <!-- SL4J -->

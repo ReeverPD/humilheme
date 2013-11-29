@@ -31,10 +31,10 @@
     <link rel="apple-touch-icon-precomposed" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/resources/img/favicon.png">
 
-    <title><decorator:title default="Humilhe.me - Totalmente desnecessário" /></title>
-    
-    <decorator:head/>
-    
+        <title><sitemesh:write property='title'/> Humilhe.me - Totalmente desnecessário</title>
+        
+        <sitemesh:write property='head'/>
+
     <script type="text/javascript" charset="utf-8">
         (function(G,o,O,g,L,e){G[g]=G[g]||function(){(G[g]['q']=G[g]['q']||[]).push(
          arguments)},G[g]['t']=1*new Date;L=o.createElement(O),e=o.getElementsByTagName(
@@ -83,7 +83,7 @@
    		</div>
     </div>
     
-    <decorator:body />
+    <sitemesh:write property='body'/>
     
     <form action="${pageContext.servletContext.contextPath}/Login-Facebook" id="_frmLoginFace" name="_frmLoginFace">
         <input type="hidden" name="x" value="1" />

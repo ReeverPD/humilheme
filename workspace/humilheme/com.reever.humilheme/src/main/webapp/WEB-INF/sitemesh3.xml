@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    
+    <content-processor>
+        <!--<tag-rule-bundle class="com.something.CssCompressingBundle" />-->
+        <!--<tag-rule-bundle class="com.something.LinkRewritingBundle"/>-->
+    </content-processor>
+    
+    <mapping path="/*" decorator="/WEB-INF/decorators/main-theme.jsp"/>
+    <mapping path="/app/*" decorator="/WEB-INF/decorators/intern-theme.jsp"/>
+    
+</sitemesh>

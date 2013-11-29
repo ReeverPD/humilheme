@@ -13,14 +13,11 @@
 		<pattern>/META-INF/*</pattern>
 	</excludes>
     
+    <decorator name="intern-theme" page="intern-theme.jsp">
+        <pattern>/app*</pattern>
+    </decorator>
     <decorator name="main-theme" page="main-theme.jsp">
-        <pattern>/Home</pattern>
-        <pattern>/</pattern>
         <pattern>/*</pattern>
     </decorator>
-    <decorator name="intern-theme" page="intern-theme.jsp">
-        <pattern>/Convidar</pattern>
-        <pattern>/Batalhar</pattern>
-        <pattern>/Humilhar</pattern>
-    </decorator>
+    
 </decorators>
