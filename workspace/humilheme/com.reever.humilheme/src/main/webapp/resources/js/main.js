@@ -34,6 +34,12 @@ $(document).ready(function(){
 	
 	$(".facebookFriendsList .inviteTrigger").bind("click", function(e){
 		e.preventDefault();
+        el = $(e.currentTarget);
+        
+        $("#btnHumilhe").attr("data-profile-id", el.attr('data-profile-id'));
+        $("#profilePic").attr("src", el.attr('data-picture'));
+        $("#txtNameHumilhe").text(el.attr('data-name'));
+        
 		$("#overlay").fadeIn(1000, function(){
 			var element = $(this), 
 				btnClose = element.find(".overlayBtnClose");
@@ -68,5 +74,14 @@ $(document).ready(function(){
         $("#_frmLoginFace").submit();
     });
     
+    $("#btnSearch").bind('click', function(e){
+        e.preventDefautl();
+        $("#frmPesquisar").submit();
+    });
+    
+    $("#btnHumilhe").bind('click', function(e){
+        e.preventDefault();
+        var profile_id = $("#btnHumilhe").attr('profile_id');
+    });
     
 });

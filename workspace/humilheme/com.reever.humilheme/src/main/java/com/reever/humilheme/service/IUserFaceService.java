@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.FacebookProfile;
 
 /**
  *
@@ -20,7 +21,9 @@ import org.springframework.social.facebook.api.Facebook;
  */
 public interface IUserFaceService {
  
-    public Connection<Facebook> getFacebookConnection();
+    FacebookProfile getMe();
+    String getClientID();
+    Connection<Facebook> getFacebookConnection();
     UserTO getAuthUser();
     String getChaveSession();
     boolean autenticarUsuarioFaceBook(String code, String redirectUrl, HttpServletRequest request, HttpServletResponse response) throws FacebookLoginException;

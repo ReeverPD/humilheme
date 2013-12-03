@@ -9,18 +9,21 @@ import com.reever.humilheme.util.UrlMapping;
 import com.reever.humilheme.web.CookieController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.UserProfile;
 import org.springframework.social.facebook.api.Facebook;
+import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -36,7 +39,12 @@ public class UserFaceService implements IUserFaceService{
     
     public static final String CHAVE_SESSION = "humilhe.me.user";
 	private static final Logger _logger = LoggerFactory.getLogger(UserFaceService.class);
-    private FacebookConnectionFactory connectionFactory = new FacebookConnectionFactory("363836663737073", "39f536d4a514437615fcd3d5d2f3f81a");
+    
+    @Getter
+    private final String clientID = "363836663737073";
+    private final String secretID = "39f536d4a514437615fcd3d5d2f3f81a";
+    
+    private FacebookConnectionFactory connectionFactory = new FacebookConnectionFactory(clientID, secretID);
     
     @Autowired
     private CookieController cookieLoginFace;
@@ -49,6 +57,7 @@ public class UserFaceService implements IUserFaceService{
 		return CHAVE_SESSION;
 	}
 
+    @Transactional
     @Override
 	public boolean autenticarUsuarioFaceBook(String code, String redirectUrl, HttpServletRequest request, HttpServletResponse response) throws FacebookLoginException {
         OAuth2Operations oauthOperations = connectionFactory.getOAuthOperations();
@@ -84,6 +93,7 @@ public class UserFaceService implements IUserFaceService{
             userTO.setUsername(usr.getUserName());
             userTO.setCode(code);
             this.setUserFaceSession(userTO);
+            this.setAccessGrantSession(accessGrant);
             return true;
         }
    	}
@@ -111,7 +121,9 @@ public class UserFaceService implements IUserFaceService{
     private void setUserFaceSession(UserTO user){
         RequestContextHolder.currentRequestAttributes().setAttribute(this.getChaveSession(), user, RequestAttributes.SCOPE_SESSION);
     }
-    
-    
-    
+
+    @Override
+    public FacebookProfile getMe() {
+        return this.getFacebookConnection().getApi().userOperations().getUserProfile();    
+    }
 }

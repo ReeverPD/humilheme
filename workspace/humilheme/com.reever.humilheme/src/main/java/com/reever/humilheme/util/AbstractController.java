@@ -19,5 +19,18 @@ public abstract class AbstractController {
     @Getter
     private Logger logger = LoggerFactory.getLogger(AbstractController.class);
     
+    /**
+     * 
+     * Build URL Pattern with profile
+     * 
+     * @param url
+     * @param profileA
+     * @param profileB
+     * @return 
+     */
+    protected String buildURLProfile(String url, String profileA, String profileB){
+        return url.replace("{profileA}", profileA).replace("{profileB}", profileB);
+    }
+    
     
 }

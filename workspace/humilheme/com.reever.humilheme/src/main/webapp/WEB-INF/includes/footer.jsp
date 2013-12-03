@@ -14,8 +14,8 @@
         </div>
 
         <div class="share">
-            <a href="http://facebook.com/" class="ntw-facebook" title="Facebook"></a>
-            <a href="http://twitter.com/" class="ntw-twitter" title="Twitter"></a>
+            <a href="http://facebook.com/shitstormlabs" class="ntw-facebook" title="Facebook"></a>
+            <a href="http://twitter.com/shitstormlabs" class="ntw-twitter" title="Twitter"></a>
         </div>
 
         <div class="clear"></div>

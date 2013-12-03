@@ -48,27 +48,30 @@
 	<div id="overlay">
     	<div class="overlayContent confirmInviteFriend">
         	<a href="#" class="overlayBtnClose"></a>
-            <h2>Deseja ser humilhado por <span>"Luba Shumeiko"</span>?</h2>
-            
-            <div>
-            	<div style="float:left; margin-left:30px; margin-right:10px;"><img src="${pageContext.servletContext.contextPath}/resources/img/chumbaChumbeico.jpg" width="103" height="103" /></div>
-            	<div style="float:left;">
-                    <label style="display:block; line-height:22px; cursor:pointer;">
-                        <input type="checkbox" name="" /> 
-                        <span>Enviar 1 solicitação apenas</span>
-                    </label>
-                    <label style="display:block; line-height:22px; cursor:pointer;">
-                        <input type="checkbox" name="" /> 
-                        <span>
-                            Battle mode! 
-                            <a href="#" class="help" title="Ajuda">
-                                <img src="${pageContext.servletContext.contextPath}/resources/img/iconHelp.png" />
-                            </a>
-                        </span>
-                    </label>
-                    <a href="#" class="btnHumiliate"></a>
-             	</div>
-            </div>
+            <h2>Deseja ser humilhado por <span id="txtNameHumilhe"></span>?</h2>
+            <form id="frmHumiliate" name="frmHumiliate" action="${pageContext.servletContext.contextPath}/app/Convidar/Invite" method="post">
+                <input type="hidden" name="friendId" />
+                <input type="hidden" name="friendName" />
+                <div>
+                    <div style="float:left; margin-left:30px; margin-right:10px;"><img id="profilePic" src="" width="103" height="103" /></div>
+                    <div style="float:left;">
+                        <label style="display:block; line-height:22px; cursor:pointer;">
+                            <input type="radio" name="tipo" value="0" /> 
+                            <span>Enviar 1 solicitação apenas</span>
+                        </label>
+                        <label style="display:block; line-height:22px; cursor:pointer;">
+                            <input type="radio" name="tipo" value="1" checked="checked" /> 
+                            <span>
+                                Battle mode! 
+                                <a href="#" class="help" title="Ajuda">
+                                    <img src="${pageContext.servletContext.contextPath}/resources/img/iconHelp.png" />
+                                </a>
+                            </span>
+                        </label>
+                        <a href="#" class="btnHumiliate" id="btnHumilhe" data-profile-id=""></a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
