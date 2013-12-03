@@ -9,5 +9,6 @@ import com.reever.humilheme.entity.User;
 public interface IUserRepository extends IRepository<User, Long>{
 
     User findUserByUserName(String username);
+    User findByProfileId(Long profileId);
     
 }

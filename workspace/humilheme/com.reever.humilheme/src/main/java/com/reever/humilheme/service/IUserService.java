@@ -11,6 +11,7 @@ public interface IUserService extends IService<User, Long> {
     boolean existsUser(String username);
     
     User getByUserName(String username);
+    User findByProfileId(Long profileId);
     
 }
 

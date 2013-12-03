@@ -22,14 +22,15 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/resources/css/internal.css" media="all" />
 
     <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/resources/css/jquery.vegas.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/resources/css/prettyLoader.css" media="all" />
 
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/resources/img/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.servletContext.contextPath}/resources/img/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="${pageContext.servletContext.contextPath}/resources/img/favicon.png" />
 
         <title><sitemesh:write property='title'/> Humilhe.me - Totalmente desnecessário</title>
         
@@ -50,7 +51,7 @@
         	<a href="#" class="overlayBtnClose"></a>
             <h2>Deseja ser humilhado por <span id="txtNameHumilhe"></span>?</h2>
             <form id="frmHumiliate" name="frmHumiliate" action="${pageContext.servletContext.contextPath}/app/Convidar/Invite" method="post">
-                <input type="hidden" name="friendId" />
+                <input type="hidden" name="friendId"  />
                 <input type="hidden" name="friendName" />
                 <div>
                     <div style="float:left; margin-left:30px; margin-right:10px;"><img id="profilePic" src="" width="103" height="103" /></div>
@@ -103,7 +104,9 @@
                             
     <script src="${pageContext.servletContext.contextPath}/resources/js/jquery-2.0.0.min.js"></script>    
 	<script src="${pageContext.servletContext.contextPath}/resources/js/jquery.vegas.js"></script>
-	<script src="${pageContext.servletContext.contextPath}/resources/js/main.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/jquery.prettyLoader.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/resources/js/main.js"></script>
+    
     
     <script type="text/javascript">
 

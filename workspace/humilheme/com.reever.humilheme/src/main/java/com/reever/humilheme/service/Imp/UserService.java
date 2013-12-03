@@ -40,4 +40,9 @@ public class UserService extends AbstractService<User, Long> implements IUserSer
         return this.repository.findUserByUserName(username);
     }
     
+    @Override
+    public User findByProfileId(Long profileId){
+        return this.repository.findByProfileId(profileId);
+    }
+    
 }

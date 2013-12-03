@@ -28,6 +28,7 @@ public class Solicitacao extends AbstractEntity<Long> {
     @Column(name="id")
     private Long Id;
     
+    @Getter @Setter
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false)
     private User UsuarioRequisitor;

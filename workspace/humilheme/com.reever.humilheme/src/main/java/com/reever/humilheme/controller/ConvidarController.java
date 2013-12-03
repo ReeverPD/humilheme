@@ -81,7 +81,7 @@ public class ConvidarController extends AbstractController {
             @RequestParam final String friendId,
             @RequestParam final String friendName,
             HttpServletRequest request, HttpServletResponse response, ModelMap model){
-        String urlRetorno = (tipo.equals("0"))? UrlMapping.HUMILHAR_AMIGO : UrlMapping.BATALHAR_AMIGO;
+        String urlRetorno = (tipo.equals("0"))? this.buildURLProfile(UrlMapping.HUMILHAR_AMIGO, this.userService.getMe().getName(), friendName) : this.buildURLProfile(UrlMapping.BATALHAR_AMIGO, this.userService.getMe().getName(), friendName);
         
         String fbURL = "https://www.facebook.com/dialog/apprequests?" +
                         "app_id="+ userService.getClientID() +

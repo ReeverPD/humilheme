@@ -26,4 +26,16 @@ public class UserRepository extends AbstractRepository<User, Long> implements IU
         return lstUsers.get(0);
     }
     
+    @Override
+    public User findByProfileId(Long profileId){
+        Query query = this.getEntityManager()
+                                .createQuery("SELECT u FROM User AS u WHERE u.profileId = :profileid");
+        query.setParameter("profileid", profileId);
+        List<User> lstUsers = query.getResultList();
+        if(lstUsers.isEmpty()){
+            throw new UserException();
+        }
+        return lstUsers.get(0);
+    }
+    
 }

@@ -55,13 +55,14 @@ $(document).ready(function(){
     $("#btnDonate").bind('click', function(e){
         e.preventDefault();
         value = $("#txtDonationField").val();
+        showLoading();
         $.ajax({
             url: APPLICATION_CONTEXT_PATH+"/Doar/"+value,
             type: "POST",
             dataType: "json",
             success : function(data){
-                alert(data.sucess);
                 if(data.sucess){
+                    hideLoading();
                     $("#_xclickPaypal").submit();
                 }
             }
@@ -81,7 +82,26 @@ $(document).ready(function(){
     
     $("#btnHumilhe").bind('click', function(e){
         e.preventDefault();
-        var profile_id = $("#btnHumilhe").attr('profile_id');
+        $("input[name='friendId']").val($("#btnHumilhe").attr("data-profile-id"));
+        $("input[name='friendName']").val($("#txtNameHumilhe").text());
+        $("#frmHumiliate").submit();
+        
     });
-    
+    $.prettyLoader({
+			animation_speed: 'fast', /* fast/normal/slow/integer */
+			bind_to_ajax: true, /* true/false */
+			delay: false, /* false OR time in milliseconds (ms) */
+            loader: APPLICATION_CONTEXT_PATH+'/resources/img/ajax-loader.gif',
+			offset_top: 13, /* integer */
+			offset_left: 10 /* integer */
+    });
 });
+
+function showLoading(){
+    $.prettyLoader.show();
+}
+
+
+function hideLoading(){
+    $.prettyLoader.hide();
+}

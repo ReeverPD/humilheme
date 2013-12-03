@@ -129,6 +129,7 @@
 
         <script src="${pageContext.servletContext.contextPath}/resources/js/jquery.jscrollpane.min.js"></script>
         <script src="${pageContext.servletContext.contextPath}/resources/js/jquery.vegas.js"></script>
+        <script src="${pageContext.servletContext.contextPath}/resources/js/jquery.prettyLoader.js"></script>
 
         <script src="${pageContext.servletContext.contextPath}/resources/js/main.js"></script>
 

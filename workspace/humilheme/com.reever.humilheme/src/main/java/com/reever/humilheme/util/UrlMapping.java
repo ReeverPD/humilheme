@@ -21,9 +21,9 @@ public class UrlMapping {
     /* Humilhar */
     public static final String CONVIDAR_AMIGO = "/app/Convidar";
     public static final String CONVIDAR_AMIGO_INVITE = "/app/Convidar/Invite";
+    public static final String CONVIDAR_PESQUISAR_AMIGO = "/app/Convidar/pesquisar";
     public static final String BATALHAR_AMIGO = "/app/Batalhar/{profileA}/{profileB}";
     public static final String HUMILHAR_AMIGO = "/app/Humilhar/{profileA}/{profileB}";
-    public static final String CONVIDAR_PESQUISAR_AMIGO = "/app/Convidar/pesquisar";
     
     
     /* Login com Facebook */
