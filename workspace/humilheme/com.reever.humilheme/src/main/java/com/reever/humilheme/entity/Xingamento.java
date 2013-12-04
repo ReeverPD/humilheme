@@ -49,4 +49,8 @@ public class Xingamento extends AbstractEntity<Long>  {
     @Column(name="isBattleMode")
     private SimNao battleMode;
     
+    @Getter @Setter
+    @Column(name="request_id", nullable = false)
+    private Long requestId;
+    
 }

@@ -41,6 +41,7 @@ public class AbstractRepository<T extends AbstractEntity<K>, K extends Object> i
     @Override
     public T save(T entity) {
         this.getEntityManager().persist(entity);
+        this.getEntityManager().refresh(entity);
         return entity;
     }
 

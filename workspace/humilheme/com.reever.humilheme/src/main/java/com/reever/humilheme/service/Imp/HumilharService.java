@@ -28,20 +28,23 @@ public class HumilharService implements IHumilharService{
     
     @Transactional
     @Override
-    public boolean sendSolicitacao(Long profileId, Long friendProfileId, Long postId) {
+    public Solicitacao sendSolicitacao(Long profileId, Long friendProfileId, Long postId) {
         Solicitacao solicitacao = new Solicitacao();
         solicitacao.setDataCriacao(Calendar.getInstance());
         solicitacao.setFriendFaceId(friendProfileId);
         solicitacao.setUsuarioRequisitor(userService.findByProfileId(profileId));
         try{
-            solicitacaoRepository.save(solicitacao);
-            return true;
+            return solicitacaoRepository.save(solicitacao);
         }catch(Exception ex){
             _logger.error("Não foi possivel enviar solicitação", ex);
-            return false;
+            return null;
         }
     }
- 
+
+    @Override
+    public Solicitacao getSolicitacaoById(Long idSolicitacao){
+        return solicitacaoRepository.getById(idSolicitacao);
+    }
     
     
 }

@@ -1,11 +1,14 @@
 package com.reever.humilheme.service;
 
+import com.reever.humilheme.entity.Solicitacao;
+
 /**
  *
  * @author iuriandreazza
  */
 public interface IHumilharService {
     
-    boolean sendSolicitacao(Long profileId, Long friendProfileId, Long postId);
+    Solicitacao sendSolicitacao(Long profileId, Long friendProfileId, Long postId);
+    Solicitacao getSolicitacaoById(Long idSolicitacao);
     
 }

@@ -38,8 +38,8 @@ public class Solicitacao extends AbstractEntity<Long> {
     private Long friendFaceId;
     
     @Getter @Setter
-    @Column(name="post_id")
-    private Long postId;
+    @Column(name="request_id")
+    private Long requestId;
     
     @Getter @Setter
     @Column(name="data_criacao")

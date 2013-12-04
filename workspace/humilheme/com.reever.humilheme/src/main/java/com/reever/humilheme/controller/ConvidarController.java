@@ -1,5 +1,6 @@
 package com.reever.humilheme.controller;
 
+import com.reever.humilheme.entity.Solicitacao;
 import com.reever.humilheme.service.IHumilharService;
 import com.reever.humilheme.service.IUserFaceService;
 import com.reever.humilheme.util.AbstractController;
@@ -75,22 +76,88 @@ public class ConvidarController extends AbstractController {
         return new ModelAndView("convidar", model);
     }
     
+    /**
+     * Invite Friend
+     * 
+     * @param tipo
+     * @param friendId
+     * @param friendName
+     * @param request
+     * @param response
+     * @param model
+     * @return 
+     */
     @RequestMapping(method = RequestMethod.POST, value = { UrlMapping.CONVIDAR_AMIGO_INVITE })
     public ModelAndView handleInvite(
             @RequestParam final String tipo,
             @RequestParam final String friendId,
             @RequestParam final String friendName,
             HttpServletRequest request, HttpServletResponse response, ModelMap model){
-        String urlRetorno = (tipo.equals("0"))? this.buildURLProfile(UrlMapping.HUMILHAR_AMIGO, this.userService.getMe().getName(), friendName) : this.buildURLProfile(UrlMapping.BATALHAR_AMIGO, this.userService.getMe().getName(), friendName);
+        String urlRetorno = (tipo.equals("0"))
+                                ? this.buildURLProfile(UrlMapping.HUMILHAR_INVITE_AMIGO, this.userService.getMe().getName(), friendName) 
+                                : this.buildURLProfile(UrlMapping.BATALHAR_INVITE_AMIGO, this.userService.getMe().getName(), friendName);
+        
+        Solicitacao sol = this.humilharService.sendSolicitacao(Long.valueOf(this.userService.getMe().getId()), Long.valueOf(friendId), 0L);
         
         String fbURL = "https://www.facebook.com/dialog/apprequests?" +
                         "app_id="+ userService.getClientID() +
-                        "&message=" + StringEscapeUtils.escapeHtml4("Você tem coragem? Peça para " + friendName + " tentar criar uma humilhão!")  +
-                        "&redirect_uri=http://localhost:8080/com.reever.humilheme"+urlRetorno;
-        
-        this.humilharService.sendSolicitacao(Long.valueOf(this.userService.getMe().getId()), Long.valueOf(friendId), 0L);
+                        "&title=Você tem coragem?" +
+                        "&message=" + "Peça para " + friendName + " tentar criar uma humilhãção melhor que a sua!"  +
+                        "&redirect_uri=http://localhost:8080/com.reever.humilheme"+urlRetorno + "?s=" + sol.getId() +
+                        "&max_recipients=1&to="+friendId;
         
         return new ModelAndView("redirect:"+fbURL);
+    }
+    
+    /**
+     * handleInviteHumilharBack
+     * 
+     * 
+     * @param s
+     * @param request
+     * @param profileA
+     * @param profileB
+     * @param requestH
+     * @param response
+     * @param model
+     * @return 
+     */
+    @RequestMapping(method = RequestMethod.POST, value = { UrlMapping.HUMILHAR_INVITE_AMIGO })
+    public ModelAndView handleInviteHumilharBack(
+            @RequestParam final Long s,
+            @RequestParam final Long request,
+            @RequestParam final String profileA,
+            @RequestParam final String profileB,
+            HttpServletRequest requestH, HttpServletResponse response, ModelMap model){
+        
+        Solicitacao sol = this.humilharService.getSolicitacaoById(s);
+        return new ModelAndView("redirect:"+this.buildURLProfile(UrlMapping.HUMILHAR_AMIGO, profileA, profileB).replace("{requestId}", request.toString()));
+    }
+    
+    
+    /**
+     * handleInviteBattleBack
+     * 
+     * 
+     * @param s
+     * @param request
+     * @param profileA
+     * @param profileB
+     * @param requestH
+     * @param response
+     * @param model
+     * @return 
+     */
+    @RequestMapping(method = RequestMethod.POST, value = { UrlMapping.HUMILHAR_INVITE_AMIGO })
+    public ModelAndView handleInviteBattleBack(
+            @RequestParam final Long s,
+            @RequestParam final Long request,
+            @RequestParam final String profileA,
+            @RequestParam final String profileB,
+            HttpServletRequest requestH, HttpServletResponse response, ModelMap model){
+        
+        Solicitacao sol = this.humilharService.getSolicitacaoById(s);
+        return new ModelAndView("redirect:"+this.buildURLProfile(UrlMapping.BATALHAR_AMIGO, profileA, profileB).replace("{requestId}", request.toString()));
     }
     
 }
