@@ -74,9 +74,5 @@ public abstract class AbstractController {
         return null;
     }
     
-    protected ModelAndView AutenticarUsuarioFacebook(){
-        
-        return new ModelAndView();
-    }
     
 }

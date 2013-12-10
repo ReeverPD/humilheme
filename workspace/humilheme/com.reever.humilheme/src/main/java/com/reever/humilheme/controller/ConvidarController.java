@@ -3,6 +3,7 @@ package com.reever.humilheme.controller;
 import com.reever.humilheme.entity.Solicitacao;
 import com.reever.humilheme.service.IHumilharService;
 import com.reever.humilheme.util.AbstractController;
+import com.reever.humilheme.util.EscapeChars;
 import com.reever.humilheme.util.UrlMapping;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +91,8 @@ public class ConvidarController extends AbstractController {
             @RequestParam final String friendName,
             HttpServletRequest request, HttpServletResponse response, ModelMap model){
         String urlRetorno = (tipo.equals("0"))
-                                ? this.buildURLProfile(UrlMapping.HUMILHAR_INVITE_AMIGO, this.userService.getMe().getName(), friendName) 
-                                : this.buildURLProfile(UrlMapping.BATALHAR_INVITE_AMIGO, this.userService.getMe().getName(), friendName);
+                                ? this.buildURLProfile(UrlMapping.HUMILHAR_INVITE_AMIGO, EscapeChars.removeAccents(this.userService.getMe().getName()), EscapeChars.removeAccents(friendName)) 
+                                : this.buildURLProfile(UrlMapping.BATALHAR_INVITE_AMIGO, EscapeChars.removeAccents(this.userService.getMe().getName()), EscapeChars.removeAccents(friendName));
         
         Solicitacao sol = this.humilharService.sendSolicitacao(Long.valueOf(this.userService.getMe().getId()), Long.valueOf(friendId), 0L);
         String fbURL = getFacebookInviteUrl(friendName, urlRetorno, sol, friendId);

@@ -56,5 +56,10 @@ public class HumilharService implements IHumilharService{
         solicitacaoRepository.save(solicitacao);
     }
     
+    @Override
+    public boolean existeBattle(Long requestId){
+        return false;
+    }
+    
     
 }

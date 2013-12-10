@@ -1,5 +1,7 @@
 package com.reever.humilheme.controller;
 
+import com.reever.humilheme.entity.Solicitacao;
+import com.reever.humilheme.entity.User;
 import com.reever.humilheme.service.IHumilharService;
 import com.reever.humilheme.service.IUserFaceService;
 import com.reever.humilheme.util.AbstractController;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,17 +28,12 @@ public class HumiliarController extends AbstractController {
     
     @RequestMapping(method = RequestMethod.GET, value = { UrlMapping.BATALHAR_AMIGO })
     public ModelAndView handleBattleMode(
-            
+            @PathVariable final String profileA,
+            @PathVariable final String profileB,
+            @PathVariable final Long requestId,
             HttpServletRequest request, HttpServletResponse response, ModelMap model){
         
-        if(this.getCurrUser() != null){
-            try{
-                this.userService.getFacebookConnection();
-            }catch(Exception ex){
-                //Erro não é possivel obter token do face, validar login
-                
-            }
-        }
+        Solicitacao sol = this.humilharService.getSolicitacaoByRequestId(requestId);
         
         return new ModelAndView("battle");
     }
