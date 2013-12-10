@@ -6,9 +6,12 @@
 
 package com.reever.humilheme.util;
 
+import com.reever.humilheme.entity.Solicitacao;
+import com.reever.humilheme.service.IUserFaceService;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -16,6 +19,10 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractController {
 
+    @Autowired
+    protected IUserFaceService userService;
+    
+    
     @Getter
     private Logger logger = LoggerFactory.getLogger(AbstractController.class);
     
@@ -30,6 +37,28 @@ public abstract class AbstractController {
      */
     protected String buildURLProfile(String url, String profileA, String profileB){
         return url.replace("{profileA}", profileA).replace("{profileB}", profileB);
+    }
+    
+    /**
+     * Constroi a URL de invite do facebook sempre que gerar uma requisição de
+     * JOIN
+     * 
+     * @param friendName
+     * @param urlRetorno
+     * @param sol
+     * @param friendId
+     * @return 
+     */
+    protected String getFacebookInviteUrl(final String friendName, String urlRetorno, Solicitacao sol, final String friendId) {
+        
+        String fbURL = "https://www.facebook.com/dialog/apprequests?" +
+                "app_id="+ userService.getClientID() +
+                "&title=Você tem coragem?" +
+                "&message=" + "Peça para " + friendName + " tentar criar uma humilhãção melhor que a sua!"  +
+                "&redirect_uri=http://localhost:8080/com.reever.humilheme"+urlRetorno + "?s=" + sol.getId() +
+                "&max_recipients=1&to="+friendId;
+        logger.info(">> requisitou invite: "+fbURL);
+        return fbURL;
     }
     
     

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
  * @author iuriandreazza
  */
 @Repository
-public class UserRepository extends AbstractRepository<User, Long> implements IUserRepository {
+public class UserRepositoryImpl extends AbstractRepository<User, Long> implements IUserRepository {
 
     @Override
     public User findUserByUserName(String username){

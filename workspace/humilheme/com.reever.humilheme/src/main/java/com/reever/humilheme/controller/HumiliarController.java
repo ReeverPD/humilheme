@@ -21,8 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HumiliarController extends AbstractController {
     
     @Autowired
-    private IUserFaceService userService;
-    @Autowired
     private IHumilharService humilharService;
     
     @RequestMapping(method = RequestMethod.GET, value = { UrlMapping.BATALHAR_AMIGO })

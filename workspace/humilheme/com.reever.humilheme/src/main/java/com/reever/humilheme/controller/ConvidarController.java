@@ -2,18 +2,17 @@ package com.reever.humilheme.controller;
 
 import com.reever.humilheme.entity.Solicitacao;
 import com.reever.humilheme.service.IHumilharService;
-import com.reever.humilheme.service.IUserFaceService;
 import com.reever.humilheme.util.AbstractController;
 import com.reever.humilheme.util.UrlMapping;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,9 +25,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ConvidarController extends AbstractController {
 
-
-    @Autowired
-    private IUserFaceService userService;
     @Autowired
     private IHumilharService humilharService;
     
@@ -98,16 +94,11 @@ public class ConvidarController extends AbstractController {
                                 : this.buildURLProfile(UrlMapping.BATALHAR_INVITE_AMIGO, this.userService.getMe().getName(), friendName);
         
         Solicitacao sol = this.humilharService.sendSolicitacao(Long.valueOf(this.userService.getMe().getId()), Long.valueOf(friendId), 0L);
-        
-        String fbURL = "https://www.facebook.com/dialog/apprequests?" +
-                        "app_id="+ userService.getClientID() +
-                        "&title=Você tem coragem?" +
-                        "&message=" + "Peça para " + friendName + " tentar criar uma humilhãção melhor que a sua!"  +
-                        "&redirect_uri=http://localhost:8080/com.reever.humilheme"+urlRetorno + "?s=" + sol.getId() +
-                        "&max_recipients=1&to="+friendId;
-        
+        String fbURL = getFacebookInviteUrl(friendName, urlRetorno, sol, friendId);
         return new ModelAndView("redirect:"+fbURL);
     }
+
+    
     
     /**
      * handleInviteHumilharBack
@@ -122,15 +113,17 @@ public class ConvidarController extends AbstractController {
      * @param model
      * @return 
      */
-    @RequestMapping(method = RequestMethod.POST, value = { UrlMapping.HUMILHAR_INVITE_AMIGO })
+    @RequestMapping(method = RequestMethod.GET, value = { UrlMapping.HUMILHAR_INVITE_AMIGO })
     public ModelAndView handleInviteHumilharBack(
             @RequestParam final Long s,
             @RequestParam final Long request,
-            @RequestParam final String profileA,
-            @RequestParam final String profileB,
+            @PathVariable final String profileA,
+            @PathVariable final String profileB,
             HttpServletRequest requestH, HttpServletResponse response, ModelMap model){
         
         Solicitacao sol = this.humilharService.getSolicitacaoById(s);
+        sol.setRequestId(request);
+        this.humilharService.saveSolicitacao(sol);
         return new ModelAndView("redirect:"+this.buildURLProfile(UrlMapping.HUMILHAR_AMIGO, profileA, profileB).replace("{requestId}", request.toString()));
     }
     
@@ -148,15 +141,17 @@ public class ConvidarController extends AbstractController {
      * @param model
      * @return 
      */
-    @RequestMapping(method = RequestMethod.POST, value = { UrlMapping.HUMILHAR_INVITE_AMIGO })
+    @RequestMapping(method = RequestMethod.GET, value = { UrlMapping.BATALHAR_INVITE_AMIGO })
     public ModelAndView handleInviteBattleBack(
             @RequestParam final Long s,
             @RequestParam final Long request,
-            @RequestParam final String profileA,
-            @RequestParam final String profileB,
+            @PathVariable final String profileA,
+            @PathVariable final String profileB,
             HttpServletRequest requestH, HttpServletResponse response, ModelMap model){
         
         Solicitacao sol = this.humilharService.getSolicitacaoById(s);
+        sol.setRequestId(request);
+        this.humilharService.saveSolicitacao(sol);
         return new ModelAndView("redirect:"+this.buildURLProfile(UrlMapping.BATALHAR_AMIGO, profileA, profileB).replace("{requestId}", request.toString()));
     }
     

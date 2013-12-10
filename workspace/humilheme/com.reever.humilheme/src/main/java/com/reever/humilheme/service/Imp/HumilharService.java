@@ -46,5 +46,15 @@ public class HumilharService implements IHumilharService{
         return solicitacaoRepository.getById(idSolicitacao);
     }
     
+    @Override
+    public Solicitacao getSolicitacaoByRequestId(Long idRequest){
+        return solicitacaoRepository.getByIdRequest(idRequest);
+    }
+    
+    @Override
+    public void saveSolicitacao(Solicitacao solicitacao){
+        solicitacaoRepository.save(solicitacao);
+    }
+    
     
 }

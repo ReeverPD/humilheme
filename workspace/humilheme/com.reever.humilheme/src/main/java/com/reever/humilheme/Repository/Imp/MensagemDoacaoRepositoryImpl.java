@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @author Iuri Andreazza
  */
 @Repository
-public class MensagemDoacaoRepository extends AbstractRepository<MensagemDoacao, Long> implements IMensagemDoacaoRepository{
+public class MensagemDoacaoRepositoryImpl extends AbstractRepository<MensagemDoacao, Long> implements IMensagemDoacaoRepository{
 
     @Override
     public List<MensagemDoacao> getMensagens() {
