@@ -27,6 +27,16 @@ public class HumiliarController extends AbstractController {
     public ModelAndView handleBattleMode(
             
             HttpServletRequest request, HttpServletResponse response, ModelMap model){
+        
+        if(this.getCurrUser() != null){
+            try{
+                this.userService.getFacebookConnection();
+            }catch(Exception ex){
+                //Erro não é possivel obter token do face, validar login
+                
+            }
+        }
+        
         return new ModelAndView("battle");
     }
     

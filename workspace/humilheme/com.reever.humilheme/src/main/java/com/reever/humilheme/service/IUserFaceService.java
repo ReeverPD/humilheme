@@ -27,6 +27,6 @@ public interface IUserFaceService {
     UserTO getAuthUser();
     String getChaveSession();
     boolean autenticarUsuarioFaceBook(String code, String redirectUrl, HttpServletRequest request, HttpServletResponse response) throws FacebookLoginException;
-    
+
     
 }

@@ -12,6 +12,8 @@ public interface IUserService extends IService<User, Long> {
     
     User getByUserName(String username);
     User findByProfileId(Long profileId);
+
+    User getById(Long idUser);
     
 }
 

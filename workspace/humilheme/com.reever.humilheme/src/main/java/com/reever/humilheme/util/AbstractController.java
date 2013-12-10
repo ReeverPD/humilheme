@@ -7,11 +7,14 @@
 package com.reever.humilheme.util;
 
 import com.reever.humilheme.entity.Solicitacao;
+import com.reever.humilheme.entity.User;
 import com.reever.humilheme.service.IUserFaceService;
+import com.reever.humilheme.service.IUserService;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -21,6 +24,9 @@ public abstract class AbstractController {
 
     @Autowired
     protected IUserFaceService userService;
+    
+    @Autowired
+    protected IUserService userLocalService;
     
     
     @Getter
@@ -61,5 +67,16 @@ public abstract class AbstractController {
         return fbURL;
     }
     
+    protected User getCurrUser(){
+        if(this.userService.getAuthUser() != null){
+            return this.userLocalService.getById(this.userService.getAuthUser().getIdUser());
+        }
+        return null;
+    }
+    
+    protected ModelAndView AutenticarUsuarioFacebook(){
+        
+        return new ModelAndView();
+    }
     
 }

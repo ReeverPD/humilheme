@@ -14,9 +14,9 @@ public class UrlMapping {
     public static final String DOAR = "/Doar/{mensagem}";
     
     /* Static Content */
-    public static final String TERMOS_UTILIZACAO = "/app/Termos-de-Utilização";
-    public static final String POLITICA_PRIVACIDADE = "/app/Politica-de-Privacidade";
-    public static final String CONTATO = "/app/Contato";
+    public static final String TERMOS_UTILIZACAO = "/Termos-de-Utilização";
+    public static final String POLITICA_PRIVACIDADE = "/Politica-de-Privacidade";
+    public static final String CONTATO = "/Contato";
     
     /* Humilhar */
     public static final String CONVIDAR_AMIGO = "/app/Convidar";

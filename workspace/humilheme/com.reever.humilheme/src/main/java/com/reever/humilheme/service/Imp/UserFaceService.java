@@ -56,7 +56,7 @@ public class UserFaceService implements IUserFaceService{
 	public String getChaveSession() {
 		return CHAVE_SESSION;
 	}
-
+    
     @Transactional
     @Override
 	public boolean autenticarUsuarioFaceBook(String code, String redirectUrl, HttpServletRequest request, HttpServletResponse response) throws FacebookLoginException {

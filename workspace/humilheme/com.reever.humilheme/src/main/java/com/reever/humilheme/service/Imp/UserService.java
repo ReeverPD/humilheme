@@ -45,4 +45,9 @@ public class UserService extends AbstractService<User, Long> implements IUserSer
         return this.repository.findByProfileId(profileId);
     }
     
+    @Override
+    public User getById(Long idUser){
+        return this.repository.getById(idUser);
+    }
+    
 }
