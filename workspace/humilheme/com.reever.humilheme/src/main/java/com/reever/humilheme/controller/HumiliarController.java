@@ -9,6 +9,7 @@ import com.reever.humilheme.util.UrlMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.facebook.api.FacebookProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,11 @@ public class HumiliarController extends AbstractController {
             HttpServletRequest request, HttpServletResponse response, ModelMap model){
         
         Solicitacao sol = this.humilharService.getSolicitacaoByRequestId(requestId);
+        FacebookProfile pA = this.userService.getFacebookProfile(sol.getFriendFaceId());
+        
+        if(!this.humilharService.existeBattle(requestId)){
+            
+        }
         
         return new ModelAndView("battle");
     }

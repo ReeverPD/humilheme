@@ -57,6 +57,29 @@ public class UserFaceService implements IUserFaceService{
 		return CHAVE_SESSION;
 	}
     
+    /**
+     * Retorna um Profile do Facebook atraves da API
+     * 
+     * @param profileId
+     * @return 
+     */
+    public FacebookProfile getFacebookProfile(Long profileId){
+        return this.getFacebookConnection().getApi().fetchObject(profileId.toString(), FacebookProfile.class);
+    }
+    
+    /**
+     * Autentica o usuario no facebook se caso não tenha autorização
+     * ejeta um FacebookLoginException com a URL que deve ser redirecionado para
+     * a autorizacao.
+     * 
+     * 
+     * @param code
+     * @param redirectUrl
+     * @param request
+     * @param response
+     * @return
+     * @throws FacebookLoginException 
+     */
     @Transactional
     @Override
 	public boolean autenticarUsuarioFaceBook(String code, String redirectUrl, HttpServletRequest request, HttpServletResponse response) throws FacebookLoginException {
@@ -75,6 +98,8 @@ public class UserFaceService implements IUserFaceService{
             cookieLoginFace.createCookie(request, response, code);
             UserProfile userProfileFace = connection.fetchUserProfile();
             UserTO userTO = new UserTO();
+            //Valida se o usuário que está no processo de login do facebook
+            //não existe na base, se o mesmo for novo registra ele.
             if(!userService.existsUser(userProfileFace.getUsername())){
                 //Gravar o usuario novo
                 User us = new User();
@@ -98,12 +123,22 @@ public class UserFaceService implements IUserFaceService{
         }
    	}
     
+    /**
+     * Retorna o Usuario Autenticado
+     * 
+     * @return 
+     */
     @Override
     public UserTO getAuthUser(){
         UserTO user = (UserTO) RequestContextHolder.currentRequestAttributes().getAttribute(this.getChaveSession(), RequestAttributes.SCOPE_SESSION);
         return user;
     }
     
+    /**
+     * Retorna a conexao com a API do Facebook
+     * 
+     * @return 
+     */
     @Override
     public Connection<Facebook> getFacebookConnection(){
         return connectionFactory.createConnection(this.getAccessGrant());
