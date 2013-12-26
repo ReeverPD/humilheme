@@ -1,10 +1,13 @@
 package com.reever.humilheme.service.Imp;
 
 import com.reever.humilheme.Repository.ISolicitacaoRepository;
+import com.reever.humilheme.Repository.IXingamentoRepository;
 import com.reever.humilheme.entity.Solicitacao;
+import com.reever.humilheme.entity.Xingamento;
 import com.reever.humilheme.service.IHumilharService;
 import com.reever.humilheme.service.IUserService;
 import java.util.Calendar;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,9 @@ public class HumilharService implements IHumilharService{
     
     @Autowired
     private IUserService userService;
+    
+    @Autowired
+    private IXingamentoRepository xingamentoRepository;
     
     @Transactional
     @Override
@@ -56,10 +62,18 @@ public class HumilharService implements IHumilharService{
         solicitacaoRepository.save(solicitacao);
     }
     
+    /*
+     * BATTLE Methods 
+     */
+    
     @Override
     public boolean existeBattle(Long requestId){
-        return false;
+        return xingamentoRepository.getBattle(requestId).isEmpty();
     }
     
+    @Override
+    public List<Xingamento> getBattle(Long requestId){
+        return xingamentoRepository.getBattle(requestId);
+    }
     
 }

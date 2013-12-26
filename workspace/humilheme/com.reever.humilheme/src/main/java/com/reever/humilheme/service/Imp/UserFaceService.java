@@ -63,6 +63,7 @@ public class UserFaceService implements IUserFaceService{
      * @param profileId
      * @return 
      */
+    @Override
     public FacebookProfile getFacebookProfile(Long profileId){
         return this.getFacebookConnection().getApi().fetchObject(profileId.toString(), FacebookProfile.class);
     }

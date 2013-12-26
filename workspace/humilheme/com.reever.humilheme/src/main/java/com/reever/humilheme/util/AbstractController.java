@@ -67,6 +67,11 @@ public abstract class AbstractController {
         return fbURL;
     }
     
+    /**
+     * Retorna o usuario corrente que está logado
+     * 
+     * @return 
+     */
     protected User getCurrUser(){
         if(this.userService.getAuthUser() != null){
             return this.userLocalService.getById(this.userService.getAuthUser().getIdUser());

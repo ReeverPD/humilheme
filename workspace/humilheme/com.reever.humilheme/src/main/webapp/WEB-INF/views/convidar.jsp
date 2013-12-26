@@ -39,13 +39,13 @@
                 <ul class="facebookFriendsList">
                     <c:forEach var="profile" items="${profiles}">
                         <li>
-                            <img src="http://graph.facebook.com/${profile.id}/picture">
+                            <img src="http://graph.facebook.com/${profile.id}/picture?width=103&height=103">
                             <span class="friendName">${profile.firstName} ${profile.lastName}</span>
                             <a href="#" class="inviteTrigger" 
                                 title="Convidar ${profile.firstName} ${profile.lastName}" 
                                 data-name="${profile.firstName} ${profile.lastName}" 
                                 data-profile-id="${profile.id}" 
-                                data-picture="http://graph.facebook.com/${profile.id}/picture">Convidar</a>
+                                data-picture="http://graph.facebook.com/${profile.id}/picture?width=103&height=103">Convidar</a>
                         </li>
                     </c:forEach>
                 </ul>

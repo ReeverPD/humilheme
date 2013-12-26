@@ -32,6 +32,7 @@ $(document).ready(function(){
         }
 	});
 	
+    //Show Overlay
 	$(".facebookFriendsList .inviteTrigger").bind("click", function(e){
 		e.preventDefault();
         el = $(e.currentTarget);
@@ -52,6 +53,7 @@ $(document).ready(function(){
 		});
 	});
     
+    //Função Doar
     $("#btnDonate").bind('click', function(e){
         e.preventDefault();
         value = $("#txtDonationField").val();
@@ -94,6 +96,23 @@ $(document).ready(function(){
             loader: APPLICATION_CONTEXT_PATH+'/resources/img/ajax-loader.gif',
 			offset_top: 13, /* integer */
 			offset_left: 10 /* integer */
+    });
+    
+    $(".btnHumiliate").bind('click', function(e){
+        e.preventDefault();
+        showLoading();
+        var message = $("#humiliation").val();
+        $.ajax({
+            url: APPLICATION_CONTEXT_PATH+"/app/Batalhar/Humiliate/{requestId}/",
+            data : { mensagem: message },
+            type: "POST",
+            dataType: "json",
+            success : function(data){
+                if(data.sucess){
+                    hideLoading();
+                }
+            }
+        })  
     });
 });
 

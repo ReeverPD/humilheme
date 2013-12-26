@@ -31,7 +31,7 @@
     <!-- JPA Config -->
         
     <beans profile="enterprise">
-        <jee:jndi-lookup id="dataSource" jndi-name="jdbc/humilhe-ds" />
+        <jee:jndi-lookup id="dataSource" jndi-name="jdbc/HumilheDS" />
         
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
             <property name="persistenceUnitName" value="humilhePU" />

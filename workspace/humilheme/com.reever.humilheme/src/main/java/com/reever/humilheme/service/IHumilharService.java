@@ -1,6 +1,8 @@
 package com.reever.humilheme.service;
 
 import com.reever.humilheme.entity.Solicitacao;
+import com.reever.humilheme.entity.Xingamento;
+import java.util.List;
 
 /**
  *
@@ -16,6 +18,8 @@ public interface IHumilharService {
     
     //Battle Mode
     boolean existeBattle(Long requestId);
+
+    List<Xingamento> getBattle(Long requestId);
     
     
 }

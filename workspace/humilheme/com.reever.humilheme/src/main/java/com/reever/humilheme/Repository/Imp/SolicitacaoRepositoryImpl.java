@@ -18,7 +18,7 @@ public class SolicitacaoRepositoryImpl extends AbstractRepository<Solicitacao, L
     @Override
     public Solicitacao getByIdRequest(Long idRequest){
         Query query = this.getEntityManager()
-                                .createQuery("SELECT u FROM User AS u WHERE u.requestId = :requestId");
+                                .createQuery("SELECT u FROM Solicitacao AS u WHERE u.requestId = :requestId");
         query.setParameter("requestId", idRequest);
         List<Solicitacao> lstSolicitacao = query.getResultList();
         if(lstSolicitacao.isEmpty()){
