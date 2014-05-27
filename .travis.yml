@@ -6,7 +6,7 @@ env:
   - secure: caWyOIMrnMEper7JyY7Kaw8D4/sWkc56AMxgv3ouTZdRhZIvCYpEbL57c85wG/z1109F7Pxsz9XkQSEqX9FbC/MZ4si/0CmaDQQCI7a8gWY3jJORaG/ixcxitzkgG/r88Tw8Z35A7qj5vo0XYR9BPc4kAWy6XNqjAHcWmByZEEc=
 branches:
   only:
-    - master
+    - ruby
 script:i
 - RAILS_ENV=test bundle exec rake db:migrate
 - bundle exec rake db:test:prepare
