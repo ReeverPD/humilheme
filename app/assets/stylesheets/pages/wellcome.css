@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+/* ---------------- #wrap ---------------- */
+
+#wrap { overflow:hidden; }
+
+/* .humilheMeLogo */
+#wrap .humilheMeLogo { display:block; width:366px; height:90px; background:url(/assets/humilheMeLogo01.png) top left no-repeat; margin:100px auto 40px; }
+
+/* .disclaimer */
+#wrap .disclaimer { width:455px; padding:7px 0px 0px 10px; height:170px; background:url(/assets/disclaimer-bg.png); margin-bottom:7px; }
+#wrap .disclaimer .dis-content { overflow:hidden; padding:0px; margin:0px; height:163px; }
+#wrap .disclaimer .dis-content h1 { font-size: 12px; margin:5px 0 10px; line-height:12px; text-transform:uppercase; font-weight:700; text-align:center; }
+#wrap .disclaimer .dis-content h2 { font-size: 12px; margin:5px 0 10px; line-height:12px; text-transform:uppercase; font-weight:700; text-align:center; }
+#wrap .disclaimer .dis-content p { margin-bottom:20px; line-height:22px; }
+
+
+/* geral */
+#wrap, 
+#wrap .donation { margin-left:auto; margin-right:auto; width:460px; }
+
+#wrap .disclaimerOptions { margin-bottom:40px; }
+#wrap .disclaimerOptions span { text-shadow:1px 1px 0 #212121; margin:5px 0px 0px; font-family: 'Pacifico', cursive; font-size:20px; font-weight:normal; color:#FFF; line-height:22px; float:left; display:block; }
+#wrap .disclaimerOptions label { float:right; line-height:14px; }
+
+#wrap .disclaimerOptions label, 
+#wrap .disclaimerOptions label input { cursor:pointer; }
+#wrap .disclaimerOptions label input { margin:0; }
+
+#wrap .disclaimerOptions label span { margin:0; display:inline; float:none; font-size:14px; font-weight:700; font-family: 'PT Sans', sans-serif; }
+
+#wrap a.btnEstrague { background:url(/assets/btnEstrague.png) top left no-repeat; display:block; width:381px; height:62px; margin:0px auto 70px; }
+#wrap a.btnEstrague:hover { opacity:0.8; }
+
+/* ------------------ */
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -184px;
+	max-width: 680px;
+}
+
+#push, 
+#footer { height: 184px; }
+#footer { position:relative; }
+
+.container .credit {
+	margin: 20px 0;
+}
+
+.hr { height:2px; width:100%; background:url(/assets/hr-dotted-bg-01.png) left top repeat-x; }
+
+.shitstormLabsLogoContainer { position:relative; margin-top:20px; height:100px; }
+
+@media (max-width: 650px) {
+ 	#semeadoresDaDiscordia { display:none; }
+}

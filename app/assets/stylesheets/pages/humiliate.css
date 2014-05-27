@@ -1,0 +1,22 @@
+.userPic { width:66px; height:66px; float:left; margin:13px 13px 0 13px; }
+.userFullName { margin-top: 20px; float:left; width: 470px; font-size:16px; color:#d9ff04; line-height:16px; margin-bottom:5px; display:block; }
+
+.inviteTitle { text-align:left !important; }
+.inviteTitle h2 { line-height:30px !important; }
+.leftColBox { padding:20px 10px !important; min-height:570px; }
+
+/* .humiliationBox */
+.humiliationBox {}
+.humiliationBox textarea { box-shadow:inset 2px 2px 4px #2d2d2d; background:#313131; margin-bottom:10px; border:1px solid #272727; overflow:auto; padding:10px; color:#888888; font-size:12px; width:528px; height:140px; font-family: 'PT Sans', sans-serif; }
+.humiliationBox .btnHumiliate { float:right; }
+
+.humiliationBox .sub { min-height:20px; float:left; margin-top: -5px; }
+.humiliationBox .sub .asterisk { line-height: 33px; float:left; display:block; color:#d9ff04; font-size:30px; margin-right:4px; height:20px; }
+.humiliationBox .sub .text { float:left; display:block; line-height: 20px; color:#888888; }
+
+/* .suggestions */
+.suggestions { padding-top:40px; }
+.suggestions h3 { font-size:20px; line-height:20px; margin-bottom:10px; text-shadow:1px 1px 1px #212121; font-weight:normal; font-family: 'Pacifico', cursive; color:#888888; }
+.suggestions ul {}
+.suggestions ul li { width:230px; float:left; color: #888888; line-height:22px;  }
+.suggestions ul li span { color:#d9ff04; padding-right:4px; }

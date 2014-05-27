@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+#invite { width:940px; margin:0 auto; }
+#invite .inviteTitle { background:rgba(37, 37, 37, 0.5); height:90px; text-align:center; line-height:90px; margin-bottom:10px; }
+#invite .inviteTitle h2 { font-family: 'Pacifico', cursive; font-weight:normal; font-size:30px; line-height:90px; }
+
+#invite .donation { width:300px; margin:0 auto 30px; }
+#invite .donation .field { width:280px; float:none; padding:5px 10px; height:20px; line-height:20px; }
+#invite .donation .donTop { margin-bottom:5px; }
+#invite .donation .cardFlags { float:left; margin:5px 0 0; }
+#invite .donation .btnDonate { float:right; margin-right:-1px; }
+#invite .inviteFooter { height:100px; }
+
+#invite .leftColBox { background:rgba(37, 37, 37, 0.5); padding:20px; }
+			
+#invite .leftCol { float:left; width:570px; margin-right:20px; }
+#invite .rightCol { float:left; width:320px; padding-left:22px; background:url(/assets/vrDotted.png) top left repeat-y; }

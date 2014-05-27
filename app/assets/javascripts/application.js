@@ -12,6 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.mousewheel
+//= require jquery.jscrollpane.min
+//= require jquery.vegas
+//= require jquery.prettyLoader
+//= require main
 //= require turbolinks
-//= require bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+    $.vegas({
+        src: "/assets/bg-01.jpg"
+    });
+    $(".disclaimer .dis-content").jScrollPane(); 
+});

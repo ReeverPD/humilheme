@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+body { min-width:520px; overflow-x:hidden; font-family: 'PT Sans', sans-serif; color:#FFF; font-size:12px; background:#111; }
+body, html { width:100%; height:100%; }
+
+* { outline:none; }
+
+a { color:#D9FF04; text-decoration:none; }
+a:hover { color:#FFF; }
+
+.clear{ clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0; }
+
+.hr { height:2px; width:100%; background:url(/assets/hr-dotted-bg-01.png) left top repeat-x; }
+
+.shitstormLabs { display:block; position:absolute; left:50%; margin-left:-45px; width:91px; height:73px; background:url(/assets/logoShitstormLabs.png) top left; }
+
+/* margin-top */
+.margin_top_5 { margin-top:5px; }
+.margin_top_10 { margin-top:10px; }
+.margin_top_20 { margin-top:20px; }
+.margin_top_30 { margin-top:30px; }
+.margin_top_40 { margin-top:40px; }
+.margin_top_50 { margin-top:50px; }
+
+/* margin-bottom */
+.margin_bottom_5 { margin-bottom:5px; }
+.margin_bottom_10 { margin-bottom:10px; }
+.margin_bottom_20 { margin-bottom:20px; }
+.margin_bottom_30 { margin-bottom:30px; }
+.margin_bottom_40 { margin-bottom:40px; }
+.margin_bottom_50 { margin-bottom:50px; }
+
+/* margin-left */
+.margin_left_5 { margin-left:5px; }
+.margin_left_10 { margin-left:10px; }
+.margin_left_20 { margin-left:20px; }
+.margin_left_30 { margin-left:30px; }
+.margin_left_40 { margin-left:40px; }
+.margin_left_50 { margin-left:50px; }
+
+/* margin-right */
+.margin_right_5 { margin-right:5px; }
+.margin_right_10 { margin-right:10px; }
+.margin_right_20 { margin-right:20px; }
+.margin_right_30 { margin-right:30px; }
+.margin_right_40 { margin-right:40px; }
+.margin_right_50 { margin-right:50px; }
+
+/* .menu */
+.menu { margin-bottom:30px; line-height:12px; text-align:left; }
+.menu .menu-content { padding:15px 0; }
+.menu .menu-content .m-left { float:left; margin-top:9px; }
+.menu .menu-content .share { float:right; }
+
+/* #semeadoresDaDiscordia */
+#semeadoresDaDiscordia { z-index:9999; border-radius:0px 0px 0px 4px; width:495px; height:420px; position:fixed; top:175px; right:-495px; background:#111; }
+#semeadoresDaDiscordia .curtaLabel { 
+	
+	display:block; 
+	background:url(/assets/labelCurta.png) top left no-repeat; 
+	width:75px; 
+	height:27px; 
+	position:absolute; 
+	top: 85px; 
+	left: -120px; 
+	
+	opacity:1;
+
+	-webkit-transition: opacity 0.3s linear;
+	-moz-transition: opacity 0.3s linear;
+	-o-transition: opacity 0.3s linear;
+	transition: opacity 0.3s linear;
+
+}
+#semeadoresDaDiscordia .btnSemeadores { display:block; background:url(/assets/btnSemeadores.png) top left no-repeat; width:72px; height:68px; position:absolute; top:0; left:-72px; }
+#semeadoresDaDiscordia .sdContent { margin-left:20px; margin-top:20px; width:455px; height:380px; }
+#semeadoresDaDiscordia .sdContent h2 { color:#FFF; font-weight:normal; font-size:20px; font-family: 'Pacifico', cursive; margin-bottom:20px; }
+
+#semeadoresDaDiscordia.opened .curtaLabel { opacity:0; }
+
+/* #overlay */
+#overlay { display:none; width:100%; height:100%; background:rgba(0, 0, 0, 0.8); position:fixed; top:0; left:0; z-index:999; }
+#overlay .overlayContent { width:590px; background:#373635; border:7px solid #444; position:absolute; top:50%; left:50%; margin-left:-295px; }
+#overlay .overlayContent a.overlayBtnClose { width:28px; height:28px; background:url(/assets/overlayBtnClose.png) top left no-repeat; display:block; position:absolute; top:0; right:0; }
+#overlay .overlayContent h2 { color:#FFF; font-weight:normal; font-size:40px; line-height:40px; font-family: 'Pacifico', cursive; margin-bottom:40px; margin-left:30px; margin-top:30px; }
+
+/* ------------ modais ------------ */
+
+/* .howItWorks */
+#overlay .overlayContent.howItWorks { height:420px; margin-top:-210px; }
+#overlay .overlayContent.howItWorks .howItWorksImg { margin:0 auto 20px; width:531px; height:189px; border-bottom:1px solid #FFF; padding-bottom:30px; }
+#overlay .overlayContent.howItWorks .btnConfirm { background:url(/assets/btnOkEntendi.png) top left no-repeat; width:136px; height:41px; display:block; float:right; margin-right:30px; }
+
+/* .confirmInviteFriend */
+#overlay .overlayContent.confirmInviteFriend { width:558px; height:232px; margin-left:-279px; margin-top:-116px; }
+#overlay .overlayContent.confirmInviteFriend .btnHumiliate { background:url(/assets/btnHumiliate.png) top left no-repeat; width:148px; height:41px; display:block; float:none; margin-top:17px; }
+#overlay .overlayContent.confirmInviteFriend h2 { margin-bottom: 20px; font-size:30px; line-height:30px; }
+#overlay .overlayContent.confirmInviteFriend h2 span { font-size:16px; color:#d9ff04; font-family: 'PT Sans', sans-serif; }
+
+/* .donation */
+.donation { padding:0px; margin-bottom:20px; }
+.donation .donationContent { padding:10px 0px 0px;  }
+
+.donation h1 { text-shadow:1px 1px 0 #212121; display:block; font-family: 'Pacifico', cursive; height:22px; font-size:20px; line-height:22px; margin-bottom:10px; color:#888; font-weight:normal; }
+.donation a.btnDonate { background:url(/assets/btnDonate.png) top left no-repeat; display:block; width:99px; height:31px; margin:0px 0px 0px 10px; }
+.donation a.btnDonate:hover {opacity:0.8; }
+
+.donation input.field { margin:0px; border:none; font-family: 'PT Sans', sans-serif; font-size:12px; color:#999; font-weight:normal; padding:0px 5px; width:290px; height:30px; line-height:30px; float:left; background:url(/assets/field-bg-01.png); }
+
+.donation .cardFlags { margin:7px 0px 10px 10px; }
+
+.donation .don-left { float:left; }
+.donation .don-right { float:right;margin-top:9px; }
+
+/* .share */
+.share a { left:198px; display:block; float:left; }
+.share a.ntw-facebook { margin-right:12px; width:14px; height:28px; background:url(/assets/btn-facebook-bg-01.png) top left no-repeat; }
+.share a.ntw-twitter { width:38px; height:24px; margin-top:4px; background:url(/assets/btn-twitter-bg-01.png) top left no-repeat; }
+
+.share a.ntw-twitter:hover, 
+.share a.ntw-facebook:hover { background-position:bottom left; }
