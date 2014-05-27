@@ -1,0 +1,30 @@
+language: ruby
+rvm:
+- 2.1.1
+env:
+  global:
+  - secure: caWyOIMrnMEper7JyY7Kaw8D4/sWkc56AMxgv3ouTZdRhZIvCYpEbL57c85wG/z1109F7Pxsz9XkQSEqX9FbC/MZ4si/0CmaDQQCI7a8gWY3jJORaG/ixcxitzkgG/r88Tw8Z35A7qj5vo0XYR9BPc4kAWy6XNqjAHcWmByZEEc=
+branches:
+  only:
+    - master
+script:i
+- RAILS_ENV=test bundle exec rake db:migrate
+- bundle exec rake db:test:prepare
+- bundle exec rspec spec/
+before_script:
+- psql -c 'create database humilheme_test' -U postgres
+bundler_args: "--binstubs=./bundler_stubs"
+after_success:
+- gem install heroku
+- yes | ruby travis_deployer.rb
+- heroku keys:clear
+- yes | heroku keys:add
+- git push heroku master
+- heroku run RAILS_ENV=production bundle exec rake assets:precompile
+- heroku run RAILS_ENV=production bundle exec rake db:migration db:seed
+deploy:
+  provider: heroku
+  app:
+    master: humilheme
+  api_key:
+    secure: StcnrlV18UQJvORWSHcUzmKFoO5p0DVkxeQRRw4ZXrHlju/c4olZqfOIKh/HXlp4YBNvam/r9aXYQfLZismXfyF1EAlo+4Ptsr8UpNDtjR8jRVDN+1wQjvvFBNN4JAPQ+oBe33Pn2/h86B5cDXwLtQ1pV6Q/A0kOFBZV55vEm/k=
