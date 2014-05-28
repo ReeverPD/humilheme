@@ -1,0 +1,70 @@
+<% content_for :scripts_head_section do %>
+  <%= stylesheet_link_tag 'pages/invite', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
+<% content_for :scripts_bottom_section do %>
+<script type="text/javascript">
+  
+  window.fbAsyncInit = function() {
+    FB.init({appId: '363836663737073', cookie: true, status : true})
+    <% if @userRequest %>
+      FB.ui({method: 'apprequests',
+          message: '<%=@msg %>',
+          to: '<%=@userId %>'
+      }, requestCallback);
+    <% end %>
+  }
+  
+  function requestCallback(){}
+  
+</script>
+<% end %>
+
+<div id="invite">
+  <div class="leftCol">
+    <div class="inviteTitle">
+      <h2>Convide um amigo à estragar seu dia. </h2>
+    </div>
+
+    <div class="leftColBox">
+
+        <div style="width:527px; height:40px; line-height:40px; margin-bottom:10px;">
+            <h3 style="float:left; font-family: 'Pacifico', cursive; color:#888; text-shadow:1px 1px 0px #212121; font-size:20px; font-weight:normal; line-height:40px;">Sugestões</h3>
+            <div style="float:right;">
+              <%= form_tag nome_amigo_path, id: 'frmPesquisar', multipart: true , method: :post do %>
+                <%= text_field :convidar, :nome_amigo, placeholder: "Pesquisar amigos do facebook", style: "color:#FFF; float:left; margin-right:10px; background:rgba(0, 0, 0, 0.4); border:none; padding:6px 10px; width:280px; height:28px; line-height:28px; font-size:12px; font-family: 'PT Sans', sans-serif;" %>
+                    <input type="image" id="btnSearch" src="/assets/btnSearch.png" style="float:right;" />
+                    <div class="clear"></div>
+                <% end %>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <% if @friends.empty? %>
+            <div>Nenhum amigo encontrado <a href="<%=convidar_amigo_path  %>">Mostrar todos amigos</a>.</div>
+        <% end %>
+        <ul class="facebookFriendsList">
+          <% @friends.each do |friend|  %>
+                <li>
+                    <img src="http://graph.facebook.com/<%=friend['id']%>/picture?width=103&height=103">
+                    <span class="friendName"><%=friend['name']%></span>
+                    <a href="#" class="inviteTrigger" 
+                        title="Convidar <%=friend['name']%>"
+                        data-name="<%=friend['name']%>"
+                        data-profile-id="<%=friend['id']%>"
+                        data-picture="http://graph.facebook.com/<%=friend['id']%>/picture?width=103&height=103">Convidar</a>
+                </li>
+            <% end %>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+  </div>
+
+  <div class="margin_bottom_30 rightCol">
+      <%= render "includes/donate" %>
+      <div class="hr margin_bottom_20"></div>
+      <%= render "includes/adsense" %>
+  </div>
+  <%= render "includes/footer" %>
+  
+</div>

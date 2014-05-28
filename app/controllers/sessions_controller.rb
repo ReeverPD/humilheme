@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_url
+    session[:token] = user.oauth_token
+    redirect_to convidar_amigo_path
   end
 
   def destroy

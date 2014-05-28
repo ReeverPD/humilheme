@@ -21,8 +21,12 @@
 //= require_tree .
 
 $(document).ready(function(){
+    var img = "bg-01.jpg";
+    if(interno){
+        img = "bg-02.jpg";
+    }
     $.vegas({
-        src: "/assets/bg-01.jpg"
-    });
+            src: "/assets/"+img
+        });
     $(".disclaimer .dis-content").jScrollPane(); 
 });

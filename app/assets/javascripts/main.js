@@ -74,7 +74,7 @@ $(document).ready(function(){
     
     $("#btnLoginFace").bind('click', function(e){
         e.preventDefault();
-        
+        $('#_frmLoginFace').submit();
     });
     
     $("#btnSearch").bind('click', function(e){
@@ -84,8 +84,8 @@ $(document).ready(function(){
     
     $("#btnHumilhe").bind('click', function(e){
         e.preventDefault();
-        $("input[name='friendId']").val($("#btnHumilhe").attr("data-profile-id"));
-        $("input[name='friendName']").val($("#txtNameHumilhe").text());
+        $("input[name='convidar[friendId]']").val($("#btnHumilhe").attr("data-profile-id"));
+        $("input[name='convidar[friendName]']").val($("#txtNameHumilhe").text());
         $("#frmHumiliate").submit();
         
     });
@@ -93,7 +93,7 @@ $(document).ready(function(){
 			animation_speed: 'fast', /* fast/normal/slow/integer */
 			bind_to_ajax: true, /* true/false */
 			delay: false, /* false OR time in milliseconds (ms) */
-            loader: APPLICATION_CONTEXT_PATH+'/assets/ajax-loader.gif',
+                        loader: APPLICATION_CONTEXT_PATH+'/assets/ajax-loader.gif',
 			offset_top: 13, /* integer */
 			offset_left: 10 /* integer */
     });

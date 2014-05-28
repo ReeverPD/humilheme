@@ -12,10 +12,23 @@ Rails.application.routes.draw do
     
   end
   
+  #Mensagens
   post '/doar/:msg', to: 'mensagems#doar', as: :msg
   resources :mensagems do
     
   end
+  
+  # Convidar
+  get '/convidar-amigo', to: 'convidar#convidar_amigo'
+  post '/convidar/pesquisar', :controller => 'convidar', :action => 'pesquisa_amigo', as: :nome_amigo
+  post '/convidar/invite', :controller => 'convidar', :action => 'invite_amigo'
+  resources :convidar do
+    
+  end
+  
+  
+  
+  
   
   
   

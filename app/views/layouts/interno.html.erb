@@ -8,7 +8,7 @@
     
     <script type="text/javascript">
         APPLICATION_CONTEXT_PATH = '';
-        var interno = false;
+        var interno = true;
     </script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,12 +42,53 @@
   
   <body>
 
+    <div id="overlay">
+    	<div class="overlayContent confirmInviteFriend">
+        	<a href="#" class="overlayBtnClose"></a>
+            <h2>Deseja ser humilhado por <span id="txtNameHumilhe"></span>?</h2>
+              <%= form_tag convidar_invite_path, id: 'frmHumiliate', name: "frmHumiliate", multipart: true , method: :post do %>
+                <%=  hidden_field :convidar, :friendId  %>
+                <%=  hidden_field :convidar, :friendName  %>
+                <div>
+                    <div style="float:left; margin-left:30px; margin-right:10px;"><img id="profilePic" src="" width="103" height="103" /></div>
+                    <div style="float:left;">
+                        <label style="display:block; line-height:22px; cursor:pointer;">
+                            <%= radio_button_tag :tipo, "0" %>
+                            <span>Enviar 1 solicitação apenas</span>
+                        </label>
+                        <label style="display:block; line-height:22px; cursor:pointer;">
+                            <%= radio_button_tag :tipo, "1" %>
+                            <span>
+                                Battle mode! 
+                                <a href="#" class="help" title="Ajuda">
+                                    <img src="/assets/iconHelp.png" />
+                                </a>
+                            </span>
+                        </label>
+                        <a href="#" class="btnHumiliate" id="btnHumilhe" data-profile-id=""></a>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+	<div id="top">
+    	<div class="topContainer">
+            <a href="#" class="topLogo"></a>
+            <div class="language">
+                <span>Português</span>
+                <span>|</span>
+                <a href="#">English</a>
+            </div>
+   		</div>
+    </div>
+    
     <%= yield %>
     
     <form action="/auth/facebook" id="_frmLoginFace" name="_frmLoginFace">
     </form>
     
-    <form name="_xclick" id="_xclickPaypal" action="https://www.paypal.com/br/cgi-bin/webscr" method="post"  target="_paypal">
+    <form name="_xclick" id="_xclickPaypal" action="https://www.paypal.com/br/cgi-bin/webscr" method="post" target="_paypal">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="iuri.andreazza@gmail.com">
         <input type="hidden" name="item_name" value="Humilhe-me Donation">
